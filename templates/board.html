@@ -1,0 +1,25 @@
+<body>
+  <h1 align=center> 게시판 </h1>
+  <table border=1 align=center width=60% height=70%>
+    <tr>
+      <td>No</td>
+      <td>제목</td>
+      <td>작성자</td>
+      <td>작성일</td>
+    </tr>
+    {% for i in boarddata %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td><a href =/board/{{ i[0] }}>{{ i[2] }}</a></td>
+      <td>{{ i[1]}}</td>
+      <td>{{ i[3]}}</td>
+      <td><a href=/edit_board/{{ i['idx'] }}>수정</a></td>
+      <td><a href=/delete_board/{{i['idx']}}>삭제</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <center><button type="button" onclick="location.href='/write_board'">글작성</button>&nbsp;
+  <button type="button" onclick="location.href='/logout'">로그아웃</button>
+  <button type="button" onclick="location.href='/'">메인</button></center>
+</body>

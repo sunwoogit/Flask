@@ -1,0 +1,11 @@
+<body>
+  <form action="/edit_board/{{boarddata[0][0]}}" name="editboard" method="POST" enctype="multipart/form-data" align="center">
+    <input type="hidden" name="b_idx" value={{boarddata[0][5]}}>
+    Title<input type="text" name="b_name" value={{boarddata[0][1]}}><br>
+    Writer<input type="text" name="user_id" value={{boarddata[0][0]}} readonly><br>
+    Text<br><textarea name="b_data" cols='40' rows='10' value={{boarddata[0][2]}}></textarea><br>
+    File<input type=file name=board_file>&nbsp;<br>
+    <button type="submit">수정</button>&nbsp;
+    <button type="button" onclick="location.href='/board'">취소</button>
+  </form>
+</body>

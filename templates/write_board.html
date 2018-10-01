@@ -1,0 +1,11 @@
+<body>
+  <H1 align=center>글 작 성</H1>
+    <form name=write_board action=/write_board method="POST" enctype="multipart/form-data" align="center">
+        Title<input type=text name=board_title><br>
+        Writer<input type=text value={{ boarddata }}><br>
+        Text<br><textarea name="board_data" cols='40' rows='10'></textarea><br>
+        File<input type=file name=board_file><br>
+        <button type=submit>작성</button>&nbsp;
+        <button type="button" onclick="location.href='/board'">취소</button>
+    </form>
+</body>

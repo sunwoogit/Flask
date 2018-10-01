@@ -1,0 +1,58 @@
+<body>
+  <center>
+    <h1>게시판 내용</h1>
+  <table border =1>
+
+    <tr>
+      <td>작성자</td>
+      <td>{{ boarddata[0]['b_name'] }}</td>
+    </tr>
+    <tr>
+      <td>제목</td>
+      <td>{{ boarddata[0]['b_writer'] }}</td>
+    </tr>
+    <tr>
+      <td>내용</td>
+      <td>{{ boarddata[0]['b_data'] }}</td>
+    </tr>
+    <tr>
+      <td>작성일</td>
+      <td>{{ boarddata[0]['datetime'] }}</td>
+    </tr>
+    {% if boarddata[0]['b_file'] %}
+    <tr>
+      <td>File</td>
+      <td>{{ boarddata[0]['b_file'] }}</td>
+    </tr>
+    {% endif %}
+    <br><br>
+    </table>
+    <br>
+    <br>
+    <center>
+    <h1 align=center> 댓글 </h1>
+    <br>
+    =====================================================================
+    {% for i in c_data %}<br>
+    번    호 : {{ i['board_idx']}}-{{loop.index}} |
+    작 성 자 : {{ i['c_writer']}} |
+    내    용 :<a href = /edit_comment/{{i['com_idx']}}> {{ i[3]}}</a> |
+    작성일자 : {{ i['datetime']}} |
+    <a href = /delete_comment/{{i[0]}}>삭제</a>
+    <br>=====================================================================
+    {% endfor %}
+    <br>
+    <br>
+    <center>
+    <h1 align=center> 댓글 작성</h1>
+    <form action="/write_comment" name="comment" method="POST">
+      작성자<input type = "text" name="user_id" value="{{ user_id}}" readyonley>
+      댓글 내용:<input type = "text" name="comment">
+      <input type="hidden" name="b_idx" value ={{ boarddata[0]['idx'] }} >
+      <input type="submit" value="작성">
+    </form>
+    <br><br>
+    <button type="button" onclick="location.href='/board'">게시판</button>
+    <button type="button" onclick="location.href='/'">메인화면</button>
+    <button type="button" onclick="location.href='/logout'"> 로그아웃</button>
+</body>
